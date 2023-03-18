@@ -49,9 +49,27 @@
     <h2 style="text-align:center">{{ $post->title }}</h2>
 
     <div class="card">
-        {{-- <img src="{{ asset($product->image) }}" alt="Product" style="width:100%"> --}}
+        <img src="{{ asset($post->image) }}" alt="Image" style="width:100%">
         Created by: <h1>{{ $post->user->name }}</h1>
         <p class="price">Phone: {{ $post->phone }}</p>
         <p class="description">Description: {!! $post->description !!}</p>
+
+        <hr>
+
+        <form action="{{ route('post.upload.image') }}" method="post" enctype="multipart/form-data">
+            @csrf
+    
+            {{-- <input type="hidden" name="old_image" value="{{ $post->image }}"> --}}
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+    
+            <div class="form-group">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" name="image">
+                <button type="submit" class="btn" style="padding: 10px; margin: 10px 0px; width: 50%">Upload Image</button>
+                @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </form>
     </div>
 @endsection

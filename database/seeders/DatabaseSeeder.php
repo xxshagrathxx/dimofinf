@@ -14,15 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
-            'name'              =>'Super Admin',
-            'email'             =>'admin@site.com',
-            'email_verified_at' =>'2023-03-17',
-            'password'          =>Hash::make('123456789'),
-            'profile_photo_path'=>'default_imgs/default_avatar.png',
-        ]);
         // \App\Models\User::factory(10)->create();
-		// $this->call(ProductSeeder::class);
-        $this->call(CurrencySeeder::class);
+		$this->call(UserSeeder::class);
+        $this->call(PostSeeder::class);
     }
 }

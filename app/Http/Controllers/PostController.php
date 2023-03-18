@@ -11,6 +11,7 @@ use Response;
 
 use DataTables;
 use Auth;
+use Image;
 
 class PostController extends Controller
 {
@@ -197,5 +198,49 @@ class PostController extends Controller
 		);
 
 		return redirect()->back()->with($notification);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'mimes:jpeg,png,jpg,webp,gif,svg|required',
+    	],[
+            'image.mimes' => 'This field must be an image',
+            'image.required' => 'This field is required',
+    	]);
+
+        $post = Post::findOrFail($request->post_id);
+
+        $save_url = '';
+
+        if(Auth::user()->id != $post->user_id) {
+            $notification = array(
+                'message' => 'You are not authorized to add an image to this post !!',
+                'alert-type' => 'error'
+            );
+    
+            return redirect()->back()->with($notification);
+        }
+
+        if($request->file('image')) {
+            if(str_contains($post->image, 'upload'))
+                unlink($post->image);
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(186, 271)->save('uploads/'.$name_gen);
+            $save_url = 'uploads/'.$name_gen;
+
+            $post->update([
+                'image' => $save_url,
+                'updated_at' => Carbon::now(),
+            ]);
+        } 
+
+        $notification = array(
+            'message' => 'Image uploaded successfully !!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('post.show', $post->id)->with($notification);
     }
 }
