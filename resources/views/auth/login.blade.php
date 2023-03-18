@@ -34,7 +34,7 @@
               <form id="js-login" class="pt-3" action="{{ route('login') }}" method="post">
                 @csrf
                     <div class="form-group">
-                        <input type="email" name="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="{{ __('authentication.email_placeholder') }}">
+                        <input type="email" name="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="{{ __('authentication.email_placeholder') }}" value="{{ old('email') }}">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -55,6 +55,10 @@
 
                     <div class="mt-3">
                         <button id="js-login-btn" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('authentication.signin_button') }}</button>
+                    </div>
+
+                    <div class="my-2 d-flex justify-content-between align-items-center">
+                      <a href="{{ route('password.request') }}" class="auth-link text-black">Forgot password?</a>
                     </div>
 
                     <div class="text-center mt-4 font-weight-light">
