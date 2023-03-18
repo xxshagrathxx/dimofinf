@@ -29,7 +29,7 @@ class PostController extends Controller
                     return $row->title;
                 })
                 ->addColumn('description', function($row){
-                    return Str::limit(strip_tags($row->description), 50, '...');
+                    return Str::limit(strip_tags($row->description), 70, '...');
                 })
                 ->addColumn('phone', function($row){
                     return $row->phone;
@@ -75,11 +75,12 @@ class PostController extends Controller
     {
         $request->validate([
     		'title' => 'required',
-            'description' => 'required',
+            'description' => 'required|max:2048',
             'phone' => 'required',
     	],[
     		'title.required' => 'This field is required',
             'description.required' => 'This field is required',
+            'description.max' => 'This field max size is 2 KB',
             'phone.required' => 'This field is required',
     	]);
 

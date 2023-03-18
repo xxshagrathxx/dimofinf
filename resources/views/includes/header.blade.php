@@ -26,7 +26,8 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
+    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="{{ asset('js/jquery-ui-1.10.4.custom.js') }}"></script>
     <script src="{{ asset('js/jquery.PrintArea.js') }}"></script>

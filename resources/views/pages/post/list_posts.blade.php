@@ -11,15 +11,16 @@
         </div>
     </div>
 
-        <table class="yajra-datatable table-striped" id="table">
+    
+        <table class="yajra-datatable table-striped" id="table" style="white-space: unset">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Phone</th>
-                    <th>Created By</th>
-                    <th style="width: 15%">Actions</th>
+                    <th width="4%">No</th>
+                    <th width="15%">Title</th>
+                    <th width="40%">Description</th>
+                    <th width="7%">Phone</th>
+                    <th width="15%">Created By</th>
+                    <th width="13%">Actions</th>
                 </tr>
             </thead>
             <tbody>
