@@ -8,6 +8,7 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuotationContoller;
@@ -27,8 +28,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-// Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
-// Route::post('/create-user', [RegisterController::class, 'createUser'])->name('create.user');
 
 Route::get('/user/logout', [DashboardController::class, 'userLogout'])->name('user.logout');
 
@@ -54,6 +53,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         // ./Excel
     });
     // ./Products
+
+    // Posts
+    Route::prefix('post')->group(function() {
+        Route::get('/view', [PostController::class, 'index'])->name('post.view');
+        Route::get('/show/{id}', [PostController::class, 'show'])->name('post.show');
+        Route::get('/create', [PostController::class, 'create'])->name('post.create');
+        Route::post('/store', [PostController::class, 'store'])->name('post.store');
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+        Route::post('/update/{id}', [PostController::class, 'update'])->name('post.update');
+        Route::get('/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    });
+    // ./Posts
 
     // Currencies
         Route::prefix('currency')->group(function() {

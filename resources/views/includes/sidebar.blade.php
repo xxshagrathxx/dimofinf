@@ -24,14 +24,13 @@
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="mdi mdi-receipt menu-icon"></i>
-            <span class="menu-title">Products</span>
+            <span class="menu-title">Posts</span>
             <i class="menu-arrow"></i>
           </a>
           <div class="collapse" id="ui-basic">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{ route('product.view') }}">Products</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{ route('product.create') }}">Create a Product</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{ route('product.excel.view') }}">Import Products</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ route('post.view') }}">Posts List</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ route('post.create') }}">Create a Post</a></li>
             </ul>
           </div>
         </li>

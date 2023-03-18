@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name'              =>'Super Admin',
             'email'             =>'admin@site.com',
+            'email_verified_at' =>'2023-03-17',
             'password'          =>Hash::make('123456789'),
             'profile_photo_path'=>'default_imgs/default_avatar.png',
         ]);
