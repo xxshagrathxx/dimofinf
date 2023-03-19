@@ -125,8 +125,8 @@
             {{-- <a href="{{ route('profile.edit') }}" class="dropdown-item">
               <i class="mdi mdi-settings text-primary"></i>
               Edit Profile
-            </a>
-            <a href="{{ route('user.logout') }}" class="dropdown-item"> --}}
+            </a> --}}
+            <a href="{{ route('user.logout') }}" class="dropdown-item">
               <i class="mdi mdi-logout text-primary"></i>
               Logout
             </a>

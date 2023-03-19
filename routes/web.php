@@ -22,7 +22,8 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/user/logout', [DashboardController::class, 'userLogout'])->name('user.logout');
 
 // Logged in users
-Route::group(['middleware' => ['auth', 'verified']], function () {
+// used throttle middleware for preventing ddos 100 request per min.
+Route::group(['middleware' => ['auth', 'verified', 'throttle:100,1']], function () {
     Route::get('/home', function () {
         return view('pages.home');
     })->name('home');
