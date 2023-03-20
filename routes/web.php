@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +21,19 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
+Route::get('authorized/google', [SocialController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('authorized/google/callback', [SocialController::class, 'handleGoogleCallback']);
+Route::get('authorized/facebook', [SocialController::class, 'redirectToFacebook'])->name('facebook.login');
+Route::get('authorized/facebook/callback', [SocialController::class, 'handleFacebookCallback']);
+Route::get('authorized/linkedin', [SocialController::class, 'redirectToLinkedin'])->name('linkedin.login');
+Route::get('authorized/linkedin/callback', [SocialController::class, 'handleLinkedinCallback']);
+
 Route::get('/user/logout', [DashboardController::class, 'userLogout'])->name('user.logout');
 
 // Logged in users
 // used throttle middleware for preventing ddos 100 request per min.
 Route::group(['middleware' => ['auth', 'verified', 'throttle:100,1']], function () {
-    Route::get('/home', function () {
-        return view('pages.home');
-    })->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Posts
     Route::prefix('post')->group(function() {

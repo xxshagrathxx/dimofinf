@@ -65,6 +65,18 @@
                       Don't have an account? <a href="{{route('register')}}" class="text-primary">Create</a>
                     </div>
               </form>
+              <hr>
+              <div class="row">
+                <div class="col-4" align="center">
+                  <a href="{{ route('google.login') }}"><img src="{{ asset('img/google.png') }}" /></a>
+                </div>
+                <div class="col-4" align="center">
+                  <a href="{{ route('facebook.login') }}"><img src="{{ asset('img/facebook.png') }}" /></a>
+                </div>
+                <div class="col-4" align="center">
+                  <a href="{{ route('linkedin.login') }}"><img src="{{ asset('img/linkdin.png') }}" /></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
