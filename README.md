@@ -12,4 +12,8 @@ Feel free to register another user and test the posts CRUD
 
 All created users have the password "password", You can use any of the users by checking the database users table, copy the email, and then using the mentioned password
 
+Added bonus points: (Protection againest DDOS attacks with throttle, Used SOLID principles, And social login)
+
+P.S: Facebook needs live environment to get it working but the code is there
+
 Thanks
